@@ -1,9 +1,27 @@
-﻿namespace PipelineAgvControlSystem;
+﻿
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-class Program
+namespace PipelineAgvControlSystem;
+
+public class Program
 {
-    static void Main(string[] args)
+    static async void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        try
+        {
+            HostApplicationBuilder builder = new HostApplicationBuilder(args);
+
+            var service = builder.Services;
+            service.AddLogging();
+
+            using IHost host = builder.Build();
+            await host.RunAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
 }
