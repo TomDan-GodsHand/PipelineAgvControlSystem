@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PipelineAgvControlSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59aa6d6a4e57dc363130ec86d6e91aab7f8cdb38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22a48304016c9ada913b4b29cf7c74ca20a8ea28")]
 [assembly: System.Reflection.AssemblyProductAttribute("PipelineAgvControlSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PipelineAgvControlSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkPlace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj": {}
+    "D:\\Workplace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj": {}
   },
   "projects": {
-    "D:\\WorkPlace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj": {
+    "D:\\Workplace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkPlace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj",
+        "projectUniqueName": "D:\\Workplace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj",
         "projectName": "PipeLine.Base",
-        "projectPath": "D:\\WorkPlace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj",
+        "projectPath": "D:\\Workplace\\PipelineAgvControlSystem\\PipeLine.Base\\PipeLine.Base.csproj",
         "packagesPath": "C:\\Users\\TomDan\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkPlace\\PipelineAgvControlSystem\\PipeLine.Base\\obj\\",
+        "outputPath": "D:\\Workplace\\PipelineAgvControlSystem\\PipeLine.Base\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Software86\\Microsoft Visual Studio\\Shared\\NuGetPackages"

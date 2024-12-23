@@ -1,0 +1,13 @@
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\bin\Debug\net9.0\AgvControlSyetem.Entity.deps.json
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\bin\Debug\net9.0\AgvControlSyetem.Entity.dll
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\bin\Debug\net9.0\AgvControlSyetem.Entity.pdb
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.csproj.AssemblyReference.cache
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.GeneratedMSBuildEditorConfig.editorconfig
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.AssemblyInfoInputs.cache
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.AssemblyInfo.cs
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.csproj.CoreCompileInputs.cache
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.sourcelink.json
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.dll
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\refint\AgvControlSyetem.Entity.dll
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\AgvControlSyetem.Entity.pdb
+d:\Workplace\PipelineAgvControlSystem\AgvControlSyetem.Entity\obj\Debug\net9.0\ref\AgvControlSyetem.Entity.dll
