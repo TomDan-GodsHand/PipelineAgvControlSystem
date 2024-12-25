@@ -19,7 +19,7 @@ public class Program
 
             #region  注入 sqlsugar 服务
 
-            service.AddScoped<SqlSugarClient>(s =>
+            service.AddScoped<ISqlSugarClient>(s =>
             {
                 SqlSugarClient sqlSugar = new(new ConnectionConfig()
                 {
@@ -44,6 +44,10 @@ public class Program
 
             });
             #endregion
+
+
+            // Add Logic Class to host
+            service.AddLogic();
 
             // Add core service to host
             service.AddHostedService<MainService>();

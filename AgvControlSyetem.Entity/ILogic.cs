@@ -4,7 +4,6 @@ using SqlSugar;
 
 namespace AgvControlSyetem.Entity.Base;
 
-public abstract class BaseLogic(ISqlSugarClient db, ILogger Ilogger)
+public interface ILogic
 {
-
 }

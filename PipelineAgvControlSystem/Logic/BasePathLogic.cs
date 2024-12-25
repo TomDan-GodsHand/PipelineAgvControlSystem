@@ -6,7 +6,7 @@ using SqlSugar;
 
 namespace PipelineAgvControlSystem.Logic;
 
-public class BasePathLogic(ISqlSugarClient db, ILogger<BasePathLogic> logger) : BaseLogic(db, logger)
+public class BasePathLogic(ISqlSugarClient db, ILogger<BasePathLogic> logger) : ILogic
 {
 
     public bool FindAll()
@@ -18,6 +18,7 @@ public class BasePathLogic(ISqlSugarClient db, ILogger<BasePathLogic> logger) : 
         }
         catch (Exception ex)
         {
+            logger.LogError(ex.StackTrace, ex.Message);
             return false;
         }
     }

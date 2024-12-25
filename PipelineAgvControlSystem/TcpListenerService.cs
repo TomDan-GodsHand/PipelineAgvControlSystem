@@ -8,7 +8,7 @@ using PipelineAgvControlSystem.Logic;
 
 namespace PipelineAgvControlSystem;
 
-public class TcpListenerService(Context context, ILogger<TcpListenerService> logger, BasePathLogic basePathLogic) : IHostedService
+public class MainService(Context context, ILogger<MainService> logger, BasePathLogic basePathLogic) : IHostedService
 {
     Task TcpListernerTask { get; set; }
     TcpListener tcpListener { get; set; }
@@ -16,7 +16,7 @@ public class TcpListenerService(Context context, ILogger<TcpListenerService> log
     public Task StartAsync(CancellationToken cancellationToken)
     {
 
-        logger.LogInformation("Start TcpListener Service..."); ;
+        logger.LogInformation("Start Main Service..."); ;
         logger.LogInformation("Init Context..."); ;
         if (!context.InitContext())
         {
