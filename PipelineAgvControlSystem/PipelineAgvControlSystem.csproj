@@ -12,5 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AgvControlSyetem.Entity\AgvControlSyetem.Entity.csproj" />
+    <ProjectReference Include="..\PipelineSystem.Interface\PipelineSystem.Interface.csproj" />
   </ItemGroup>
 </Project>

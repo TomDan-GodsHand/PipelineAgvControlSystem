@@ -44,14 +44,10 @@ public class Program
 
             });
             #endregion
-
-
             // Add Logic Class to host
             service.AddLogic();
-
-            // Add core service to host
-            service.AddHostedService<MainService>();
-
+            // Add TcpListener service to host
+            service.AddHostedService<TcpListenerService>();
             // build the host
             using IHost host = builder.Build();
 
@@ -64,4 +60,5 @@ public class Program
             Console.WriteLine(ex.ToString());
         }
     }
+
 }

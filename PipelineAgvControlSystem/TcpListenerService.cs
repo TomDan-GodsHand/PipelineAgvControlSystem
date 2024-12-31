@@ -1,22 +1,24 @@
-using System;
 using System.Net;
 using System.Net.Sockets;
-using Azure;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PipelineAgvControlSystem.Logic;
 
 namespace PipelineAgvControlSystem;
 
-public class MainService(Context context, ILogger<MainService> logger, BasePathLogic basePathLogic) : IHostedService
+public class TcpListenerService(Context context, ILogger<TcpListenerService> logger, BasePathLogic basePathLogic) : IHostedService
 {
-    Task TcpListernerTask { get; set; }
+    Task TcpListenerTask { get; set; }
     TcpListener tcpListener { get; set; }
+
+    public delegate Task StepFinishEventHandler(byte[] data);
+
+    public event StepFinishEventHandler StepFinish;
+
     CancellationTokenSource _cts;
     public Task StartAsync(CancellationToken cancellationToken)
     {
-
-        logger.LogInformation("Start Main Service..."); ;
+        logger.LogInformation("Start TcpListener Service..."); ;
         logger.LogInformation("Init Context..."); ;
         if (!context.InitContext())
         {
@@ -24,7 +26,7 @@ public class MainService(Context context, ILogger<MainService> logger, BasePathL
             return Task.FromResult(false);
         }
         _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        TcpListernerTask = Task.Run(() => StartTcpListeninigAsync(_cts.Token), _cts.Token);
+        TcpListenerTask = Task.Run(() => StartTcpListeninigAsync(_cts.Token), _cts.Token);
         return Task.CompletedTask;
     }
 
@@ -41,16 +43,32 @@ public class MainService(Context context, ILogger<MainService> logger, BasePathL
             {
                 try
                 {
-                    var client = await tcpListener.AcceptTcpClientAsync(token);
-                    var remoteEndPoint = client.Client.RemoteEndPoint as IPEndPoint;
-                    foreach (var (agvcode, enty) in context.BasicAgvDict)
-                    {
-                        if (enty.agv_ipaddress == remoteEndPoint.Address.ToString())
-                        {
 
-                        }
+                    var socket = await tcpListener.AcceptSocketAsync(token);
+                    var remoteEndPoint = socket.RemoteEndPoint as IPEndPoint;
+
+                    if (remoteEndPoint == null)
+                    {
+                        logger.LogWarning("RemoteEndPoint is null for the connected socket.");
+                        return;
                     }
 
+                    var remoteAddress = remoteEndPoint.Address.ToString();
+                    var matchedAgv = context.BasicAgvDict.FirstOrDefault(entry => entry.Value.agv_ipaddress == remoteAddress);
+
+                    if (!string.IsNullOrEmpty(matchedAgv.Key))
+                    {
+                        logger.LogInformation($"{matchedAgv.Key} connected at {remoteEndPoint}");
+                        if (context.AgvSocketDict[matchedAgv.Key] != null)
+                            context.AgvSocketDict[matchedAgv.Key] = socket;
+                        else
+                            context.AgvSocketDict.TryAdd(matchedAgv.Key, socket);
+                        Task clientTask = Task.Run(() => TcpReciveAsync(socket, token));
+                    }
+                    else
+                    {
+                        logger.LogWarning($"Unknown device connected from {remoteEndPoint}");
+                    }
                 }
                 catch (OperationCanceledException)
                 {
@@ -69,11 +87,56 @@ public class MainService(Context context, ILogger<MainService> logger, BasePathL
         }
     }
 
+    private async Task TcpReciveAsync(Socket socket, CancellationToken token)
+    {
+        socket.ReceiveBufferSize = 1024;
+        IPEndPoint remoteEndPoint = (IPEndPoint)socket.RemoteEndPoint;
+        string clientAddress = remoteEndPoint.Address.ToString();
+        string clientEndpoint = socket.RemoteEndPoint.ToString();
+        byte[] buffer = new byte[39];
+
+        try
+        {
+            while (!token.IsCancellationRequested)
+            {
+                var receiveTask = socket.ReceiveAsync(buffer, SocketFlags.None);
+                int bytesRead = await receiveTask;
+
+                if (bytesRead == 0)
+                {
+                    logger.LogInformation($"Client {clientEndpoint} disconnected.");
+                    break;
+                }
+                if (bytesRead == 39 && StepFinish != null)
+                {
+                    StepFinish(buffer);
+                }
+                else
+                {
+                    logger.LogWarning($"Unexpected data length from {clientEndpoint}: {bytesRead} bytes.");
+                }
+            }
+        }
+        catch (SocketException ex)
+        {
+            logger.LogError($"Socket error from {clientEndpoint}: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            logger.LogError($"Unexpected error from {clientEndpoint}: {ex.Message}");
+        }
+        finally
+        {
+            socket.Close();
+            socket.Dispose();
+            logger.LogInformation($"Connection to {clientEndpoint} closed.");
+        }
+    }
     public Task StopAsync(CancellationToken cancellationToken)
     {
         logger.LogInformation($"Stop Main Service...");
         _cts.Cancel();
         tcpListener?.Stop();
-        return TcpListernerTask ?? Task.CompletedTask;
+        return TcpListenerTask ?? Task.CompletedTask;
     }
 }

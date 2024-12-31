@@ -2045,6 +2045,16 @@
         "runtime": {
           "bin/placeholder/AgvControlSyetem.Entity.dll": {}
         }
+      },
+      "PipelineSystem.Interface/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/PipelineSystem.Interface.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PipelineSystem.Interface.dll": {}
+        }
       }
     }
   },
@@ -5491,12 +5501,18 @@
       "type": "project",
       "path": "../AgvControlSyetem.Entity/AgvControlSyetem.Entity.csproj",
       "msbuildProject": "../AgvControlSyetem.Entity/AgvControlSyetem.Entity.csproj"
+    },
+    "PipelineSystem.Interface/1.0.0": {
+      "type": "project",
+      "path": "../PipelineSystem.Interface/PipelineSystem.Interface.csproj",
+      "msbuildProject": "../PipelineSystem.Interface/PipelineSystem.Interface.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "AgvControlSyetem.Entity >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 9.0.0",
+      "PipelineSystem.Interface >= 1.0.0",
       "SqlSugarCore >= 5.1.4.171"
     ]
   },
@@ -5535,6 +5551,9 @@
           "projectReferences": {
             "D:\\Workplace\\PipelineAgvControlSystem\\AgvControlSyetem.Entity\\AgvControlSyetem.Entity.csproj": {
               "projectPath": "D:\\Workplace\\PipelineAgvControlSystem\\AgvControlSyetem.Entity\\AgvControlSyetem.Entity.csproj"
+            },
+            "D:\\Workplace\\PipelineAgvControlSystem\\PipelineSystem.Interface\\PipelineSystem.Interface.csproj": {
+              "projectPath": "D:\\Workplace\\PipelineAgvControlSystem\\PipelineSystem.Interface\\PipelineSystem.Interface.csproj"
             }
           }
         }

@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("AgvControlSyetem.Entity")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("PipelineSystem.Interface")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6894dd8e0880193563fe0604b123d19511f1597")]
-[assembly: System.Reflection.AssemblyProductAttribute("AgvControlSyetem.Entity")]
-[assembly: System.Reflection.AssemblyTitleAttribute("AgvControlSyetem.Entity")]
+[assembly: System.Reflection.AssemblyProductAttribute("PipelineSystem.Interface")]
+[assembly: System.Reflection.AssemblyTitleAttribute("PipelineSystem.Interface")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。

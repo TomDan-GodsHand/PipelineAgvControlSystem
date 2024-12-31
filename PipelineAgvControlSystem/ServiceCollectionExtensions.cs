@@ -21,6 +21,8 @@ public static class ServiceCollectionExtensions
             services.AddScoped(type); // 注册类本身
         }
 
-        return services; ;
+        return services;
     }
+
+   
 }
